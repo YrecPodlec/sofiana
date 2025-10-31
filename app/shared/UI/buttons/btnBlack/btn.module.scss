@@ -1,0 +1,12 @@
+.btn{
+  background-color: #0a0a0a;
+  padding: 1rem 2rem;
+  color: white;
+  border: none;
+  border-radius: .5rem;
+  font-weight: bold;
+  cursor: pointer;
+  @media(max-width: 900px) {
+    padding: .5rem 1rem;
+  }
+}

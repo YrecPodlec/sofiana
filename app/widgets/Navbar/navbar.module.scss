@@ -1,0 +1,105 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  position: fixed;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+  z-index: 999;
+  @media(max-width: 1025px) {
+    padding: .5rem 1rem;
+  }
+  @media(max-width: 600px) {
+
+  }
+}
+
+.logo {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  height: 62px;
+  @media(max-width: 1025px) {
+    height: 48px;
+  }
+  @media(max-width: 300px) {
+    height: 32px;
+  }
+}
+.menu{
+  display: none;
+  aspect-ratio: 1 / 1;
+  height: 3rem;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  @media(max-width: 300px) {
+    height: 2rem;
+  }
+  div{
+    width: 100%;
+    background-color: #0a0a0a;
+    height: .25rem;
+    transition: all .25s ease-in-out;
+    &::after, &::before{
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: .25rem;
+      background-color: #0a0a0a;
+      transition: all .3s ease-in-out;
+    }
+    &::before{
+      top: 0.8rem;
+      @media(max-width: 300px) {
+        top: .25rem;
+      }
+    }
+    &::after{
+      bottom: 0.8rem;
+      @media(max-width: 300px) {
+        bottom: .25rem;
+      }
+    }
+  }
+  .active{
+    background: none;
+    &::before{
+      rotate: 45deg;
+      top: 1.5rem;
+      @media(max-width: 300px) {
+        top: .7rem;
+      }
+    }
+    &::after{
+      rotate: -45deg;
+      top: 1.5rem;
+      @media(max-width: 300px) {
+        top: .7rem;
+      }
+    }
+  }
+  @media(max-width: 610px) {
+    display: block;
+  }
+}
+.nav {
+  background-color: #ebebeb;
+  border-radius: 1rem;
+  padding: .6rem 1.5rem;
+  display: flex;
+  @media(max-width: 1025px) {
+    padding: .5rem 1rem;
+  }
+  @media(max-width: 610px) {
+    position: absolute;
+    top: -16rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    left: 0;
+    gap: 1rem;
+  }
+}
+.activeNav{
+  top: 4rem;
+}
