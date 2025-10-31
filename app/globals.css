@@ -27,11 +27,10 @@ main{
     display: grid;
     gap: 7.5rem;
     @media (max-width: 610px) or (max-height: 600px){
-        gap: 1rem;
+        gap: 2rem;
         margin: 2rem 1rem;
     }
 }
-
 * {
   box-sizing: border-box;
   padding: 0;

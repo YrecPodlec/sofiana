@@ -1,0 +1,42 @@
+.section{
+  padding: 0 14.313rem;
+  display: grid;
+  gap: 1.75rem;
+  .h1{
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    @media (max-width: 500px) or (max-height: 350px) {
+      font-size: 2rem;
+    }
+  }
+  .content{
+    padding: 0 7.125rem;
+    display: grid;
+    gap: 2rem;
+    @media (max-width: 900px) {
+      padding: 0 .5rem;
+    }
+  }
+  .skillsList{
+    //margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: .375rem;
+    flex-wrap: wrap;
+  }
+  .ExpList{
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (max-width: 1025px) {
+    padding: 0 7.125rem;
+  }
+  @media (max-width: 900px) or (max-height: 750px) {
+    padding: 0 4rem;
+  }
+  @media (max-width: 500px) or (max-height: 350px) {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}

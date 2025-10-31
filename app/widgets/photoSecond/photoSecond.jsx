@@ -5,7 +5,7 @@ const PhotoSecond = () => {
     return (
         <section className={styles.section}>
             <Image
-                src="/sofia.png"
+                src="/sofia.svg"
                 alt="logo"
                 fill
                 style={{ objectFit: "cover" }}
