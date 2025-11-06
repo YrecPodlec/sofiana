@@ -1,0 +1,78 @@
+.footer{
+  margin: 0 2.5rem;
+  border-top: 1px solid #EEECE8;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  @media(max-width: 600px) {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+}
+.logoBlock{
+  display: grid;
+  color: #B4B4B4;
+  gap: .625rem;
+  @media(max-width: 600px) {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  .p{
+    display: grid;
+    gap: .375rem;
+  }
+}
+.logo {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  height: 62px;
+  @media(max-width: 600px) {
+    margin: 0 auto;
+  }
+  @media(max-width: 1025px) {
+    height: 48px;
+  }
+  @media(max-width: 300px) {
+    height: 32px;
+  }
+}
+.nav{
+  display: flex;
+  gap: 4.5rem;
+  height: fit-content;
+  flex-wrap: wrap;
+  justify-content: end;
+  @media(max-width: 1025px) {
+    gap: 1rem;
+  }
+  @media(max-width: 600px) {
+    gap: .5rem;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  input{
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #FBDCD7;
+    font-size: 1.123rem;
+    @media(max-width: 600px) {
+      padding: .5rem;
+    }
+  }
+}
+.navBtns{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  @media(max-width: 600px) {
+    gap: .5rem;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+}

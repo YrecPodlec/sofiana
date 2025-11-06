@@ -3,8 +3,12 @@ import Welcome from "@/app/widgets/welcome/welcome";
 import PhotoSecond from "@/app/widgets/photoSecond/photoSecond";
 import AboutMe from "@/app/widgets/about/aboutMe";
 import Skills from "@/app/widgets/skills/skills";
+import Contact from "@/app/widgets/contact/contact";
+import Footer from "@/app/widgets/footer/footer";
 export {Navbar as Navbar}
 export {Welcome as Welcome}
 export {PhotoSecond as PhotoSecond}
 export {AboutMe as AboutMe}
 export {Skills as Skills}
+export {Contact as Contact}
+export {Footer as Footer}

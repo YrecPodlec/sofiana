@@ -1,5 +1,5 @@
 import "./globals.css";
-import {Navbar} from "@/app/widgets";
+import {Footer, Navbar} from "@/app/widgets";
 
 export const metadata = {
   title: "Sofiana ПОРТФОЛИО",
@@ -12,6 +12,7 @@ export default function RootLayout({ children }) {
       <body>
       <Navbar/>
         {children}
+      <Footer/>
       </body>
     </html>
   );

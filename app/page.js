@@ -1,4 +1,4 @@
-import {AboutMe, PhotoSecond, Skills, Welcome} from "@/app/widgets";
+import {AboutMe, Contact, PhotoSecond, Skills, Welcome} from "@/app/widgets";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
         <AboutMe/>
         {/*БЛОК ПОРТФОЛИО*/}
         <Skills/>
+        <Contact/>
     </main>
   );
 }
