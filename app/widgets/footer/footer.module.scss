@@ -66,9 +66,9 @@
   }
 }
 .navBtns{
-  display: flex;
+  display: inline-flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  box-sizing: border-box;
   @media(max-width: 600px) {
     gap: .5rem;
     flex-direction: column;

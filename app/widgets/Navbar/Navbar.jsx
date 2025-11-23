@@ -21,10 +21,18 @@ const Navbar = () => {
             </div>
 
             <nav className={`${styles.nav} ${isOpen ? styles.activeNav : ''}`}>
-                <BtnNavBar text={'Об о мне'} />
-                <BtnNavBar text={'Портфолио'} />
-                <BtnNavBar text={'Скиллы и опыт'} />
-                <BtnBlack text={'СВЯЗАТЬСЯ'}/>
+                <a href="#about">
+                    <BtnNavBar text={'Об о мне'} />
+                </a>
+                <a href="#portfolio">
+                    <BtnNavBar text={'Портфолио'} />
+                </a>
+                <a href="#skills">
+                    <BtnNavBar text={'Скиллы и опыт'} />
+                </a>
+                <a href="#call">
+                    <BtnBlack text={'СВЯЗАТЬСЯ'}/>
+                </a>
             </nav>
         </header>
     );

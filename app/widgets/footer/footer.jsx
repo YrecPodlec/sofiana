@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './footer.module.scss';
 import Image from "next/image";
-import {BtnNavBar} from "@/app/shared";
+import {BtnBlack, BtnNavBar} from "@/app/shared";
 const Footer = () => {
     return (
         <footer className={styles.footer}>
@@ -20,11 +20,17 @@ const Footer = () => {
                 </div>
             </div>
             <div className={styles.nav}>
-                <input type="text" placeholder={'🔍️ поиск по сайту'}/>
+                <input type="text" placeholder={'🔍︎ поиск по сайту'}/>
                 <div className={styles.navBtns}>
-                    <BtnNavBar text={'Об о мне'}/>
-                    <BtnNavBar text={'Портфолио'}/>
-                    <BtnNavBar text={'Скиллы'}/>
+                    <a href="#about">
+                        <BtnNavBar text={'Обо мне'} />
+                    </a>
+                    <a href="#portfolio">
+                        <BtnNavBar text={'Портфолио'} />
+                    </a>
+                    <a href="#skills">
+                        <BtnNavBar text={'Скиллы и опыт'} />
+                    </a>
                 </div>
             </div>
         </footer>

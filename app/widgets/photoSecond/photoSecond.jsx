@@ -4,12 +4,14 @@ import styles from "./photo.module.scss";
 const PhotoSecond = () => {
     return (
         <section className={styles.section}>
-            <Image
-                src="/sofia.svg"
-                alt="logo"
-                fill
-                style={{ objectFit: "cover" }}
-            />
+            <div>
+                <Image
+                    src="/sofia.svg"
+                    alt="logo"
+                    fill
+                    style={{ objectFit: "cover" }}
+                />
+            </div>
         </section>
     );
 };

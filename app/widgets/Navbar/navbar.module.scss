@@ -98,6 +98,8 @@
     justify-content: center;
     left: 0;
     gap: 1rem;
+    flex-direction: column;
+    width: 100%;
   }
 }
 .activeNav{

@@ -15,7 +15,7 @@ const Skills = () => {
         {text:'Разрабатывала интерфейсы для стартапов: лендинги, многостраничные сайты и мобильные приложения.', title:'Независимый дизайнер', time:'Февраль 2022 - Январь 2023 '},
     ]
     return (
-        <section className={styles.section}>
+        <section className={styles.section} id={"skills"}>
             <h1 className={styles.h1}>Скиллы и Опыт</h1>
             <div className={styles.content}>
                 <div className={styles.skillsList}>

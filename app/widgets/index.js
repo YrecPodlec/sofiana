@@ -5,6 +5,7 @@ import AboutMe from "@/app/widgets/about/aboutMe";
 import Skills from "@/app/widgets/skills/skills";
 import Contact from "@/app/widgets/contact/contact";
 import Footer from "@/app/widgets/footer/footer";
+import Portfolio from "@/app/widgets/portfolio/portfolio";
 export {Navbar as Navbar}
 export {Welcome as Welcome}
 export {PhotoSecond as PhotoSecond}
@@ -12,3 +13,4 @@ export {AboutMe as AboutMe}
 export {Skills as Skills}
 export {Contact as Contact}
 export {Footer as Footer}
+export {Portfolio as Portfolio}

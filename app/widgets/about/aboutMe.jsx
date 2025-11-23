@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './about.module.scss'
 const AboutMe = () => {
     return (
-        <section className={styles.section}>
+        <section className={styles.section} id='about'>
             <h1>Обо мне за 10 секунд</h1>
             <div className={styles.content}>
                 <span>Привет!👋</span><br/>
