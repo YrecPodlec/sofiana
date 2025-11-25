@@ -20,9 +20,9 @@ const Contact = () => {
     const [isValid, setIsValid] = useState(false);
 
     const data = [
-        { title: 'Telegram', url: '@isofianna', ico: 'telegram' },
-        { title: 'WhatsApp', url: '+7 (961) 972 07-67', ico: 'whatsapp' },
-        { title: 'Почта', url: 'alyabevasofya@gmail.com', ico: 'mail' },
+        { title: 'Telegram', url: '@isofianna', ico: 'telegram', href: "https://t.me/isofianna"},
+        { title: 'WhatsApp', url: '+7 (961) 972 07-67', ico: 'whatsapp', href: "tel:+79619720767"},
+        { title: 'Почта', url: 'alyabevasofya@gmail.com', ico: 'mail', href: "mailto:alyabevasofya@gmail.com"},
     ];
 
     const nameRegex = /^[А-ЯЁа-яё\s-]+$/;
@@ -99,17 +99,19 @@ const Contact = () => {
                         {data.map((item, index) => (
                             <div key={index} className={styles.boxContact}>
                                 <p>{item.title}</p>
-                                <div className={styles.ico}>
-                                    <div className={styles.photo}>
-                                        <Image
-                                            src={"/" + item.ico + '.svg'}
-                                            alt={item.title}
-                                            fill
-                                            style={{ objectFit: "cover" }}
-                                        />
+                                <a href={item.href}>
+                                    <div className={styles.ico}>
+                                        <div className={styles.photo}>
+                                            <Image
+                                                src={"/" + item.ico + '.svg'}
+                                                alt={item.title}
+                                                fill
+                                                style={{ objectFit: "cover" }}
+                                            />
+                                        </div>
+                                        <span>{item.url}</span>
                                     </div>
-                                    <span>{item.url}</span>
-                                </div>
+                                </a>
                             </div>
                         ))}
                     </div>
