@@ -111,3 +111,10 @@
   aspect-ratio: 1 / 1.1;
   background-color: #4ecdc4;
 }
+.btnBox{
+  @media (min-width: 1025px) {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

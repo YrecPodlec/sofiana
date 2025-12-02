@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Софья Алябьева — Продуктовый дизайнер</title>
     <style>
+        section, .portfolio-card, .exp-block, .skill {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.7s ease;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         *{
             scroll-behavior: smooth;
             scroll-margin-top: 120px;
@@ -737,8 +748,11 @@
                     </div>
                 </div>
             </div>
-
-            <button class="btn-black">Больше работ</button>
+            <div style="@media (min-width: 1025px) {
+            display: block;
+            }">
+                <button class="btn-black">Больше работ</button>
+            </div>
         </div>
     </section>
 
@@ -830,21 +844,81 @@
             </div>
 
             <div class="form-section">
-                <form action="#" class="form">
+                <form action="#" class="form" id="contactForm" novalidate>
                     <div class="input-group">
                         <label for="name">Ваше имя</label>
                         <input type="text" id="name" placeholder="Как вас зовут"/>
+                        <span class="error"></span>
                     </div>
+
                     <div class="input-group">
                         <label for="email">Ваш email</label>
                         <input type="email" id="email" placeholder="Ваш email"/>
+                        <span class="error"></span>
                     </div>
+
                     <div class="input-group">
                         <label for="project">Над чем будем работать?</label>
                         <textarea id="project" placeholder="Коротко о вашем проекте"></textarea>
+                        <span class="error"></span>
                     </div>
+
                     <button type="submit" class="btn-black">Отправить</button>
                 </form>
+                <script>
+                    const form = document.getElementById('contactForm');
+
+                    const nameInput = document.getElementById('name');
+                    const emailInput = document.getElementById('email');
+                    const projectInput = document.getElementById('project');
+
+                    const nameRegex = /^[А-ЯЁа-яё\s-]+$/;
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+
+                        let isValid = true;
+
+                        // Сбрасываем ошибки
+                        document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+                        // --- Имя ---
+                        if (!nameInput.value.trim()) {
+                            setError(nameInput, 'Введите ваше имя');
+                        } else if (nameInput.value.trim().length < 2) {
+                            setError(nameInput, 'Имя слишком короткое');
+                        } else if (!nameRegex.test(nameInput.value.trim())) {
+                            setError(nameInput, 'Только кириллица, пробелы и дефис');
+                        }
+
+                        // --- Email ---
+                        if (!emailInput.value.trim()) {
+                            setError(emailInput, 'Введите email');
+                        } else if (!emailRegex.test(emailInput.value.trim())) {
+                            setError(emailInput, 'Неверный формат email');
+                        }
+
+                        // --- Project ---
+                        if (!projectInput.value.trim()) {
+                            setError(projectInput, 'Расскажите о проекте');
+                        } else if (projectInput.value.trim().length < 10) {
+                            setError(projectInput, 'Минимум 10 символов');
+                        }
+
+                        if (document.querySelectorAll('.error:not(:empty)').length === 0) {
+                            alert('Спасибо! Скоро свяжусь с вами');
+                            form.reset();
+                        }
+                    });
+
+                    function setError(input, message) {
+                        isValid = false;
+                        const errorSpan = input.parentElement.querySelector('.error');
+                        errorSpan.textContent = message;
+                    }
+                </script>
+
             </div>
         </div>
     </section>
@@ -877,5 +951,64 @@
     </div>
 </footer>
 
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('section, .portfolio-card, .exp-block, .skill')
+        .forEach(el => observer.observe(el));
+
+    const image = document.querySelector('.section-image img');
+
+    window.addEventListener('scroll', () => {
+        const offset = window.scrollY * 0.15;
+        image.style.transform = `translateY(${offset}px)`;
+    });
+
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = "translateY(-10px) scale(1.02)";
+            card.style.boxShadow = "0 20px 40px rgba(0,0,0,0.15)";
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = "";
+            card.style.boxShadow = "";
+        });
+    });
+
+    document.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("mousedown", () => {
+            btn.style.transform = "scale(0.95)";
+        });
+        btn.addEventListener("mouseup", () => {
+            btn.style.transform = "scale(1)";
+        });
+        btn.addEventListener("mouseleave", () => {
+            btn.style.transform = "scale(1)";
+        });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute("href"));
+            target.scrollIntoView({ behavior: "smooth" });
+        });
+    });
+
+    const burger = document.querySelector(".menu div");
+    const toggle = document.getElementById("nav-toggle");
+
+    toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+            burger.style.transform = "rotate(90deg)";
+        } else {
+            burger.style.transform = "rotate(0deg)";
+        }
+    });
+</script>
 </body>
 </html>

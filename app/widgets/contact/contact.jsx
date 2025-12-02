@@ -1,5 +1,7 @@
-"use client"
+"use client";
+
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
 import styles from './contact.module.scss';
 import Image from "next/image";
 import { BtnBlack } from "@/app/shared";
@@ -20,9 +22,9 @@ const Contact = () => {
     const [isValid, setIsValid] = useState(false);
 
     const data = [
-        { title: 'Telegram', url: '@isofianna', ico: 'telegram', href: "https://t.me/isofianna"},
-        { title: 'WhatsApp', url: '+7 (961) 972 07-67', ico: 'whatsapp', href: "tel:+79619720767"},
-        { title: 'Почта', url: 'alyabevasofya@gmail.com', ico: 'mail', href: "mailto:alyabevasofya@gmail.com"},
+        { title: 'Telegram', url: '@isofianna', ico: 'telegram', href: "https://t.me/isofianna" },
+        { title: 'WhatsApp', url: '+7 (961) 972 07-67', ico: 'whatsapp', href: "tel:+79619720767" },
+        { title: 'Почта', url: 'alyabevasofya@gmail.com', ico: 'mail', href: "mailto:alyabevasofya@gmail.com" },
     ];
 
     const nameRegex = /^[А-ЯЁа-яё\s-]+$/;
@@ -67,7 +69,6 @@ const Contact = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-
         if (errors[name]) {
             setErrors(prev => ({ ...prev, [name]: '' }));
         }
@@ -85,9 +86,29 @@ const Contact = () => {
 
     return (
         <section className={styles.section} id="call">
-            <h1>Обсудить проект</h1>
+            <motion.h1
+                initial={{ opacity: 0, y: -100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{
+                    duration: .3,
+                    ease: [0.22, 1, 0.36, 1]
+                }}
+            >
+                Обсудить проект
+            </motion.h1>
+
             <div className={styles.container}>
-                <div className={styles.text}>
+                <motion.div
+                    className={styles.text}
+                    initial={{ opacity: 0, x: -350 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+                    transition={{
+                        duration: .3,
+                        ease: [0.34, 1.56, 0.64, 1],
+                    }}
+                >
                     <p>
                         Заполните форму или напишите мне в соцсетях - я с радостью выйду на связь
                         <br />
@@ -95,11 +116,37 @@ const Contact = () => {
                             Обычно это около 24 часов, но бывает и быстрее
                         </span>
                     </p>
-                    <div className={styles.contacts}>
+
+                    <motion.div
+                        className={styles.contacts}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.4 }}
+                        variants={{
+                            visible: {
+                                transition: { staggerChildren: 0.18 }
+                            }
+                        }}
+                    >
                         {data.map((item, index) => (
-                            <div key={index} className={styles.boxContact}>
+                            <motion.div
+                                key={index}
+                                className={styles.boxContact}
+                                variants={{
+                                    hidden: { opacity: 0, y: 100 },
+                                    visible: {
+                                        opacity: 1,
+                                        y: 0,
+                                        transition: {
+                                            duration: 0.3,
+                                            ease: [0.34, 1.56, 0.64, 1]
+                                        }
+                                    }
+                                }}
+                                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                            >
                                 <p>{item.title}</p>
-                                <a href={item.href}>
+                                <a href={item.href} target="_blank" rel="noopener noreferrer">
                                     <div className={styles.ico}>
                                         <div className={styles.photo}>
                                             <Image
@@ -112,59 +159,80 @@ const Contact = () => {
                                         <span>{item.url}</span>
                                     </div>
                                 </a>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
-                <div className={styles.formSection}>
+                <motion.div
+                    className={styles.formSection}
+                    initial={{ opacity: 0, x: 350 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+                    transition={{
+                        duration: .3,
+                        ease: [0.34, 1.56, 0.64, 1]
+                    }}
+                >
                     <form onSubmit={handleSubmit} className={styles.form} noValidate>
-                        <div className={styles.input}>
-                            <label>Ваше имя</label>
-                            <input
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                placeholder="Как вас зовут"
-                                className={errors.name ? styles.error : ''}
-                            />
-                            {errors.name && <span className={styles.errorText}>{errors.name}</span>}
-                        </div>
+                        {["name", "email", "project"].map((field, idx) => (
+                            <motion.div
+                                key={field}
+                                className={styles.input}
+                                initial={{ opacity: 0, y: 100 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: false }}
+                                transition={{
+                                    delay: 0.3 + idx * 0.2,
+                                    duration: 0.3,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <label>
+                                    {field === "name" && "Ваше имя"}
+                                    {field === "email" && "Ваш email"}
+                                    {field === "project" && "Над чем будем работать?"}
+                                </label>
+                                {field !== "project" ? (
+                                    <input
+                                        type={field === "email" ? "email" : "text"}
+                                        name={field}
+                                        value={formData[field]}
+                                        onChange={handleChange}
+                                        placeholder={field === "name" ? "Как вас зовут" : "Ваш email"}
+                                        className={errors[field] ? styles.error : ''}
+                                    />
+                                ) : (
+                                    <textarea
+                                        name={field}
+                                        value={formData.project}
+                                        onChange={handleChange}
+                                        placeholder="Коротко о вашем проекте"
+                                        rows={4}
+                                        className={errors.project ? styles.error : ''}
+                                    />
+                                )}
+                                {errors[field] && <span className={styles.errorText}>{errors[field]}</span>}
+                            </motion.div>
+                        ))}
 
-                        <div className={styles.input}>
-                            <label>Ваш email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="Ваш email"
-                                className={errors.email ? styles.error : ''}
+                        <motion.div
+                            initial={{ opacity: 0, y: 100 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{
+                                duration: 0.3,
+                                ease: [0.34, 1.56, 0.64, 1]
+                            }}
+                        >
+                            <BtnBlack
+                                text="Отправить"
+                                type="submit"
+                                disabled={!isValid}
                             />
-                            {errors.email && <span className={styles.errorText}>{errors.email}</span>}
-                        </div>
-
-                        <div className={styles.input}>
-                            <label>Над чем будем работать?</label>
-                            <textarea
-                                name="project"
-                                value={formData.project}
-                                onChange={handleChange}
-                                placeholder="Коротко о вашем проекте"
-                                rows={4}
-                                className={errors.project ? styles.error : ''}
-                            />
-                            {errors.project && <span className={styles.errorText}>{errors.project}</span>}
-                        </div>
-
-                        <BtnBlack
-                            text="Отправить"
-                            type="submit"
-                            disabled={!isValid}
-                        />
+                        </motion.div>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
