@@ -865,60 +865,83 @@
 
                     <button type="submit" class="btn-black">Отправить</button>
                 </form>
+
                 <script>
                     const form = document.getElementById('contactForm');
 
                     const nameInput = document.getElementById('name');
                     const emailInput = document.getElementById('email');
                     const projectInput = document.getElementById('project');
-
-                    const nameRegex = /^[А-ЯЁа-яё\s-]+$/;
-                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    const nameRegex1 = /^[А-ЯЁ][а-яё]{1,20}$/;
+                    const nameRegex2 = /^[А-ЯЁа-яё\s-]+$/;
+                    const nameRegex3 = /^.{2,50}$/;
+                    const emailRegex1 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    const emailRegex2 = /^[a-zA-Z0-9._%+-]{1,64}@/;
+                    const emailRegex3 = /@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+                    const emailRegex4 = /^[^.@][a-zA-Z0-9._%+-]*[^.@]@/;
+                    const emailRegex5 = /^[a-zA-Z0-9._%+-]+@((gmail|yahoo|outlook|mail)\.com)$/;
+                    const emailRegex6 = /^[^\s]+$/;
+                    const emailRegex7 = /^[^"(),:;<>@\[\]\\]+$/;
+                    const projectRegex1 = /^.{10,500}$/;
+                    const projectRegex2 = /^[^<>]+$/;
+                    const projectRegex3 = /^[\s\S]*$/;
 
                     form.addEventListener('submit', (e) => {
                         e.preventDefault();
 
                         let isValid = true;
-
-                        // Сбрасываем ошибки
                         document.querySelectorAll('.error').forEach(el => el.textContent = '');
-
-                        // --- Имя ---
-                        if (!nameInput.value.trim()) {
+                        const name = nameInput.value.trim();
+                        if (!name) {
                             setError(nameInput, 'Введите ваше имя');
-                        } else if (nameInput.value.trim().length < 2) {
-                            setError(nameInput, 'Имя слишком короткое');
-                        } else if (!nameRegex.test(nameInput.value.trim())) {
+                        } else if (!nameRegex1.test(name)) {
+                            setError(nameInput, 'Имя должно начинаться с заглавной буквы и быть кириллицей');
+                        } else if (!nameRegex2.test(name)) {
                             setError(nameInput, 'Только кириллица, пробелы и дефис');
+                        } else if (!nameRegex3.test(name)) {
+                            setError(nameInput, 'Имя слишком короткое или длинное');
                         }
-
-                        // --- Email ---
-                        if (!emailInput.value.trim()) {
+                        const email = emailInput.value.trim();
+                        if (!email) {
                             setError(emailInput, 'Введите email');
-                        } else if (!emailRegex.test(emailInput.value.trim())) {
-                            setError(emailInput, 'Неверный формат email');
+                        } else if (!emailRegex1.test(email)) {
+                            setError(emailInput, 'Общий формат email неверен');
+                        } else if (!emailRegex2.test(email)) {
+                            setError(emailInput, 'Локальная часть слишком длинная');
+                        } else if (!emailRegex3.test(email)) {
+                            setError(emailInput, 'Доменная часть неверна');
+                        } else if (!emailRegex4.test(email)) {
+                            setError(emailInput, 'Email не должен начинаться или заканчиваться точкой');
+                        } else if (!emailRegex5.test(email)) {
+                            setError(emailInput, 'Не Корректный домен')
+                        } else if (!emailRegex6.test(email)) {
+                            setError(emailInput, 'Email не должен содержать пробелов');
+                        } else if (!emailRegex7.test(email)) {
+                            setError(emailInput, 'Email содержит запрещенные символы');
                         }
-
-                        // --- Project ---
-                        if (!projectInput.value.trim()) {
+                        const project = projectInput.value.trim();
+                        if (!project) {
                             setError(projectInput, 'Расскажите о проекте');
-                        } else if (projectInput.value.trim().length < 10) {
-                            setError(projectInput, 'Минимум 10 символов');
+                        } else if (!projectRegex1.test(project)) {
+                            setError(projectInput, 'Минимум 10 символов, максимум 500');
+                        } else if (!projectRegex2.test(project)) {
+                            setError(projectInput, 'Теги HTML запрещены');
+                        } else if (!projectRegex3.test(project)) {
+                            setError(projectInput, 'Некорректные символы в проекте');
                         }
 
                         if (document.querySelectorAll('.error:not(:empty)').length === 0) {
                             alert('Спасибо! Скоро свяжусь с вами');
                             form.reset();
                         }
+
+                        function setError(input, message) {
+                            isValid = false;
+                            const errorSpan = input.parentElement.querySelector('.error');
+                            errorSpan.textContent = message;
+                        }
                     });
-
-                    function setError(input, message) {
-                        isValid = false;
-                        const errorSpan = input.parentElement.querySelector('.error');
-                        errorSpan.textContent = message;
-                    }
                 </script>
-
             </div>
         </div>
     </section>
