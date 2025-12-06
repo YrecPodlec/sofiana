@@ -118,3 +118,38 @@
     margin: 0 auto;
   }
 }
+
+.filters {
+  display: flex;
+  gap: 32px;
+  margin: 48px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  position: relative;
+
+  &.active,
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: currentColor;
+  }
+}
