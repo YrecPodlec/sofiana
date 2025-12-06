@@ -6,11 +6,11 @@ const Welcome = () => {
     return (
         <section className={styles.section}>
             <motion.span
-                initial={{ opacity: 0, y: 80 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
+                exit={{ opacity: 0, y: 50 }}
                 viewport={{
-                    once: false,
+                    once: true,
                     amount: 0.2,
                     margin: "-10% 0% -10% 0%"
                 }}

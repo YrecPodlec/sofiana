@@ -8,9 +8,9 @@ const AboutMe = () => {
     return (
         <section className={styles.section} id="about">
             <motion.h1
-                initial={{ opacity: 0, y: -60 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.4 }}
                 transition={{
                     duration: 1,
                     ease: [0.22, 1, 0.36, 1],
@@ -24,7 +24,7 @@ const AboutMe = () => {
                 initial="hidden"
                 whileInView="visible"
                 exit="hidden"
-                viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+                viewport={{ once: true, amount: 0.3, margin: "-100px" }}
                 variants={{
                     visible: {
                         transition: {
@@ -35,7 +35,7 @@ const AboutMe = () => {
             >
                 <motion.span
                     variants={{
-                        hidden: { opacity: 0, y: 60 },
+                        hidden: { opacity: 0, y: 50 },
                         visible: {
                             opacity: 1,
                             y: 0,
@@ -52,7 +52,7 @@ const AboutMe = () => {
 
                 <motion.p
                     variants={{
-                        hidden: { opacity: 0, y: 60 },
+                        hidden: { opacity: 0, y: 50 },
                         visible: {
                             opacity: 1,
                             y: 0,
@@ -70,7 +70,7 @@ const AboutMe = () => {
 
                 <motion.p
                     variants={{
-                        hidden: { opacity: 0, y: 60 },
+                        hidden: { opacity: 0, y: 50 },
                         visible: {
                             opacity: 1,
                             y: 0,
@@ -89,7 +89,7 @@ const AboutMe = () => {
 
                 <motion.span
                     variants={{
-                        hidden: { opacity: 0, y: 60 },
+                        hidden: { opacity: 0, y: 50 },
                         visible: {
                             opacity: 1,
                             y: 0,

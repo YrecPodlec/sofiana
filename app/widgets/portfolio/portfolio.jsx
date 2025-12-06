@@ -40,9 +40,9 @@ const Portfolio = () => {
     return (
         <section className={styles.section} id="portfolio">
             <motion.h1
-                initial={{ opacity: 0, y: -80 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: .3, ease: [0.22, 1, 0.36, 1] }}
             >
                 Продукты которые работают
@@ -63,17 +63,13 @@ const Portfolio = () => {
                             key={i}
                             className={className}
                             initial={{
-                                opacity: 0,
-                                x: fromLeft ? -350 : 350,
-                                y: 0,
+                                y: 50,
                             }}
                             whileInView={{
-                                opacity: 1,
-                                x: 0,
                                 y: 0,
                             }}
                             viewport={{
-                                once: false,
+                                once: true,
                                 amount: 0.3,
                                 margin: "-100px"
                             }}
@@ -82,7 +78,6 @@ const Portfolio = () => {
                                 ease: [0.34, 1.56, 0.64, 1],
                             }}
                             whileHover={{
-                                y: -2,
                                 scale: 1.02,
                                 transition: { duration: 0.05, ease: "easeOut" }
                             }}
@@ -112,9 +107,9 @@ const Portfolio = () => {
             </div>
 
             <motion.div
-                initial={{ y: 60 }}
+                initial={{ y: 50 }}
                 whileInView={{ y: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 transition={{
                     duration: 0.1,
                     ease: [0.34, 1.56, 0.64, 1],

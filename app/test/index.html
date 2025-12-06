@@ -44,22 +44,20 @@
         .portfolio-wrapper {
             display: grid;
             gap: 2rem;
-            grid-template-rows: 1fr 1fr;   /* ровно две строки одинаковой высоты */
+            grid-template-rows: 1fr 1fr;
         }
 
         .portfolio-row {
             display: grid;
-            grid-template-columns: 2fr 1fr;   /* первая строка: широкий + квадрат */
+            grid-template-columns: 2fr 1fr;
             gap: 2rem;
             height: 100%;
         }
 
-        /* Во второй строке меняем порядок колонок */
         .portfolio-row:nth-child(2) {
-            grid-template-columns: 1fr 2fr;   /* квадрат + широкий */
+            grid-template-columns: 1fr 2fr;
         }
 
-        /* Общие стили карточек */
         .portfolio-card {
             position: relative;
             border-radius: 2rem;
@@ -625,9 +623,54 @@
                 gap: 2rem;
             }
         }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .preloader-title {
+            font-size: 4rem;
+            margin: 0;
+            color: #000;
+            text-align: center;
+        }
+
+        .preloader-subtitle {
+            font-size: 2rem;
+            margin-top: 10px;
+            color: #555;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
+
+<!-- Preloader -->
+<div class="preloader">
+    <div class="preloader-content">
+        <h1 class="preloader-title">Софья Алябьева</h1>
+        <p class="preloader-subtitle">Продукт Дизайнер</p>
+    </div>
+</div>
+
+
 
 <!-- НАВИГАЦИЯ -->
 <header class="header">
@@ -1033,5 +1076,16 @@
         }
     });
 </script>
+<script>
+    window.addEventListener('load', () => {
+        const preloader = document.querySelector('.preloader');
+
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 2500); // задержка 2.5 сек
+    });
+</script>
+
+
 </body>
 </html>

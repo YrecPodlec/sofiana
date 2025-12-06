@@ -40,9 +40,9 @@ const Skills = () => {
         <section className={styles.section} id="skills">
             <motion.h1
                 className={styles.h1}
-                initial={{ opacity: 0, y: -50 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.4 }}
                 transition={{
                     duration: .3,
                     ease: [0.22, 1, 0.36, 1],
@@ -56,7 +56,7 @@ const Skills = () => {
                     className={styles.skillsList}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+                    viewport={{ once: true, amount: 0.3, margin: "-100px" }}
                     variants={{
                         visible: { transition: { staggerChildren: 0.14 } },
                     }}
@@ -65,10 +65,9 @@ const Skills = () => {
                         <motion.div
                             key={index}
                             variants={{
-                                hidden: { opacity: 0, x: 550, y: 0 },
+                                hidden: { opacity: 0, y: 50 },
                                 visible: {
                                     opacity: 1,
-                                    x: 0,
                                     y: 0,
                                     transition: {
                                         duration: 0.3,
@@ -86,7 +85,7 @@ const Skills = () => {
                     className={styles.ExpList}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+                    viewport={{ once: true, amount: 0.3, margin: "-100px" }}
                     variants={{
                         visible: {
                             transition: { staggerChildren: 0.16, delayChildren: 0.25 },
@@ -97,10 +96,9 @@ const Skills = () => {
                         <motion.div
                             key={index}
                             variants={{
-                                hidden: { opacity: 0, x: 350, y: 0 },
+                                hidden: { opacity: 0, y: 50 },
                                 visible: {
                                     opacity: 1,
-                                    x: 0,
                                     y: 0,
                                     transition: {
                                         duration: 0.3,

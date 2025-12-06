@@ -16,11 +16,11 @@ const PhotoSecond = () => {
     return (
         <section className={styles.section}>
             <motion.div
-                initial={{ opacity: 0, y: 120 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -60 }}
                 viewport={{
-                    once: false,
+                    once: true,
                     amount: 0.3,
                     margin: "-10% 0% -10% 0%"
                 }}

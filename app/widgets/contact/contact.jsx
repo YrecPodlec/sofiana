@@ -87,9 +87,9 @@ const Contact = () => {
     return (
         <section className={styles.section} id="call">
             <motion.h1
-                initial={{ opacity: 0, y: -100 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.4 }}
                 transition={{
                     duration: .3,
                     ease: [0.22, 1, 0.36, 1]
@@ -101,9 +101,9 @@ const Contact = () => {
             <div className={styles.container}>
                 <motion.div
                     className={styles.text}
-                    initial={{ opacity: 0, x: -350 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3, margin: "-100px" }}
                     transition={{
                         duration: .3,
                         ease: [0.34, 1.56, 0.64, 1],
@@ -121,7 +121,7 @@ const Contact = () => {
                         className={styles.contacts}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: false, amount: 0.4 }}
+                        viewport={{ once: true, amount: 0.4 }}
                         variants={{
                             visible: {
                                 transition: { staggerChildren: 0.18 }
@@ -133,7 +133,7 @@ const Contact = () => {
                                 key={index}
                                 className={styles.boxContact}
                                 variants={{
-                                    hidden: { opacity: 0, y: 100 },
+                                    hidden: { opacity: 0, y: 50 },
                                     visible: {
                                         opacity: 1,
                                         y: 0,
@@ -166,9 +166,9 @@ const Contact = () => {
 
                 <motion.div
                     className={styles.formSection}
-                    initial={{ opacity: 0, x: 350 }}
+                    initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+                    viewport={{ once: true, amount: 0.3, margin: "-100px" }}
                     transition={{
                         duration: .3,
                         ease: [0.34, 1.56, 0.64, 1]
@@ -179,9 +179,9 @@ const Contact = () => {
                             <motion.div
                                 key={field}
                                 className={styles.input}
-                                initial={{ opacity: 0, y: 100 }}
+                                initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false }}
+                                viewport={{ once: true }}
                                 transition={{
                                     delay: 0.3 + idx * 0.2,
                                     duration: 0.3,
@@ -217,9 +217,9 @@ const Contact = () => {
                         ))}
 
                         <motion.div
-                            initial={{ opacity: 0, y: 100 }}
+                            initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false }}
+                            viewport={{ once: true }}
                             transition={{
                                 duration: 0.3,
                                 ease: [0.34, 1.56, 0.64, 1]
