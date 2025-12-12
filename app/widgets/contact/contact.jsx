@@ -85,30 +85,20 @@ const Contact = () => {
     };
 
     return (
-        <section className={styles.section} id="call">
-            <motion.h1
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{
-                    duration: .3,
-                    ease: [0.22, 1, 0.36, 1]
-                }}
-            >
+        <motion.section className={styles.section} id="call"
+                 initial={{ opacity: 0, y: 50 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true, amount: 0.2 }}
+                 transition={{
+                     duration: .2,
+                     ease: [0.22, 1, 0.36, 1]
+                 }}>
+            <h1>
                 Обсудить проект
-            </motion.h1>
+            </h1>
 
             <div className={styles.container}>
-                <motion.div
-                    className={styles.text}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3, margin: "-100px" }}
-                    transition={{
-                        duration: .3,
-                        ease: [0.34, 1.56, 0.64, 1],
-                    }}
-                >
+                <div className={styles.text}>
                     <p>
                         Заполните форму или напишите мне в соцсетях - я с радостью выйду на связь
                         <br />
@@ -117,34 +107,11 @@ const Contact = () => {
                         </span>
                     </p>
 
-                    <motion.div
-                        className={styles.contacts}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.4 }}
-                        variants={{
-                            visible: {
-                                transition: { staggerChildren: 0.18 }
-                            }
-                        }}
-                    >
+                    <div className={styles.contacts}>
                         {data.map((item, index) => (
-                            <motion.div
+                            <div
                                 key={index}
-                                className={styles.boxContact}
-                                variants={{
-                                    hidden: { opacity: 0, y: 50 },
-                                    visible: {
-                                        opacity: 1,
-                                        y: 0,
-                                        transition: {
-                                            duration: 0.3,
-                                            ease: [0.34, 1.56, 0.64, 1]
-                                        }
-                                    }
-                                }}
-                                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                            >
+                                className={styles.boxContact}>
                                 <p>{item.title}</p>
                                 <a href={item.href} target="_blank" rel="noopener noreferrer">
                                     <div className={styles.ico}>
@@ -159,35 +126,17 @@ const Contact = () => {
                                         <span>{item.url}</span>
                                     </div>
                                 </a>
-                            </motion.div>
+                            </div>
                         ))}
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
 
-                <motion.div
-                    className={styles.formSection}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3, margin: "-100px" }}
-                    transition={{
-                        duration: .3,
-                        ease: [0.34, 1.56, 0.64, 1]
-                    }}
-                >
+                <div className={styles.formSection}>
                     <form onSubmit={handleSubmit} className={styles.form} noValidate>
                         {["name", "email", "project"].map((field, idx) => (
-                            <motion.div
+                            <div
                                 key={field}
-                                className={styles.input}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    delay: 0.3 + idx * 0.2,
-                                    duration: 0.3,
-                                    ease: "easeOut"
-                                }}
-                            >
+                                className={styles.input}>
                                 <label>
                                     {field === "name" && "Ваше имя"}
                                     {field === "email" && "Ваш email"}
@@ -213,28 +162,20 @@ const Contact = () => {
                                     />
                                 )}
                                 {errors[field] && <span className={styles.errorText}>{errors[field]}</span>}
-                            </motion.div>
+                            </div>
                         ))}
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{
-                                duration: 0.3,
-                                ease: [0.34, 1.56, 0.64, 1]
-                            }}
-                        >
+                        <div>
                             <BtnBlack
                                 text="Отправить"
                                 type="submit"
                                 disabled={!isValid}
                             />
-                        </motion.div>
+                        </div>
                     </form>
-                </motion.div>
+                </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

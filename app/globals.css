@@ -34,10 +34,12 @@ a{
 }
 * {
   box-sizing: border-box;
+    will-change: opacity, transform;
   padding: 0;
   margin: 0;
     transition: all .3s ease-in-out;
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
     scroll-margin-top: 120px;
+
 }
